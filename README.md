@@ -10,13 +10,13 @@ The platform allows users to browse books, manage carts, place orders, and provi
 
 ## Frontend (Vercel)
 
-https://your-frontend.vercel.app
+https://bookstore-app-six.vercel.app
 
 ---
 
 ## Backend API (Render)
 
-https://your-backend.onrender.com
+https://bookstore-app-3p3v.onrender.com
 
 ---
 
