@@ -17,6 +17,7 @@ function AdminOrders() {
   }, [toast]);
 
   const statusColors = {
+    PLACED: "badge bg-indigo-100 text-indigo-700",
     PENDING: "badge bg-amber-100 text-amber-700",
     SHIPPED: "badge bg-blue-100 text-blue-700",
     DELIVERED: "badge bg-emerald-100 text-emerald-700",
@@ -55,7 +56,7 @@ function AdminOrders() {
                 {orders.map((order) => (
                   <tr key={order.id} className="border-b border-surface-50 hover:bg-surface-50 transition-colors">
                     <td className="py-3 px-4 font-medium text-surface-900">#{order.id}</td>
-                    <td className="py-3 px-4 text-surface-600">{order.user?.email || `User #${order.userId || "?"}`}</td>
+                    <td className="py-3 px-4 text-surface-600">{order.user?.email || order.user?.name || `User #${order.user?.id || "?"}`}</td>
                     <td className="py-3 px-4 font-semibold text-surface-900">₹{order.totalAmount || 0}</td>
                     <td className="py-3 px-4 text-surface-500 text-xs">{order.orderDate ? new Date(order.orderDate).toLocaleDateString() : "—"}</td>
                     <td className="py-3 px-4"><span className={statusColors[order.status] || "badge-gray"}>{order.status || "PENDING"}</span></td>
@@ -65,6 +66,7 @@ function AdminOrders() {
                         onChange={(e) => updateStatus(order.id, e.target.value)}
                         className="text-xs border border-surface-200 rounded-lg px-2 py-1.5 bg-white focus:outline-none focus:ring-2 focus:ring-brand-400"
                       >
+                        <option value="PLACED">Placed</option>
                         <option value="PENDING">Pending</option>
                         <option value="SHIPPED">Shipped</option>
                         <option value="DELIVERED">Delivered</option>

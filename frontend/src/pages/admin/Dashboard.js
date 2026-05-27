@@ -12,7 +12,7 @@ function AdminDashboard() {
     Promise.all([
       API.get("/books/public").catch(() => ({ data: [] })),
       API.get("/orders").catch(() => ({ data: [] })),
-      API.get("/users").catch(() => ({ data: [] })),
+      API.get("/admin/users").catch(() => ({ data: [] })),
     ]).then(([booksRes, ordersRes, usersRes]) => {
       const books = Array.isArray(booksRes.data) ? booksRes.data : [];
       const orders = Array.isArray(ordersRes.data) ? ordersRes.data : [];

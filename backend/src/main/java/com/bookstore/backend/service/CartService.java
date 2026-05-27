@@ -4,6 +4,7 @@ import com.bookstore.backend.model.*;
 import com.bookstore.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -32,9 +33,15 @@ public class CartService {
     }
 
     public List<Cart> getUserCart(Long userId) {
-        return cartRepo.findAll()
-                .stream()
-                .filter(c -> c.getUser().getId().equals(userId))
-                .toList();
+        return cartRepo.findByUserId(userId);
+    }
+
+    public void removeFromCart(Long cartItemId) {
+        cartRepo.deleteById(cartItemId);
+    }
+
+    @Transactional
+    public void clearUserCart(Long userId) {
+        cartRepo.deleteByUserId(userId);
     }
 }

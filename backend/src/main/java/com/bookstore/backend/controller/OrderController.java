@@ -22,4 +22,14 @@ public class OrderController {
     public java.util.List<Order> getUserOrders(@PathVariable Long id) {
         return service.getUserOrders(id);
     }
+
+    @GetMapping
+    public java.util.List<Order> getAllOrders() {
+        return service.getAllOrders();
+    }
+
+    @PutMapping("/{id}/status")
+    public Order updateStatus(@PathVariable Long id, @RequestParam String status) {
+        return service.updateOrderStatus(id, status);
+    }
 }

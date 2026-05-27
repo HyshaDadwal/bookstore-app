@@ -10,7 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
-@com.fasterxml.jackson.annotation.JsonIgnoreProperties({"orders"})
 public class User {
 
     @Id
@@ -22,6 +21,7 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    @com.fasterxml.jackson.annotation.JsonProperty(access = com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     private String role; // ADMIN / USER

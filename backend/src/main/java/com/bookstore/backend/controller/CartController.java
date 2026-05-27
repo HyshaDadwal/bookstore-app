@@ -28,4 +28,9 @@ public class CartController {
     public List<Cart> getCart(@PathVariable Long userId) {
         return service.getUserCart(userId);
     }
+
+    @DeleteMapping("/{id}")
+    public void removeFromCart(@PathVariable Long id) {
+        service.removeFromCart(id);
+    }
 }
